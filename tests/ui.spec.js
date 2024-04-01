@@ -3,7 +3,7 @@ const exp = require('constants');
 
 test.describe.configure({ mode: "serial" });
 
-const baseUrl = 'https://scary-story-qa-bvk3.onrender.com/';
+const baseUrl = 'https://scary-story-qa-bvk3.onrender.com';
 
 test.beforeEach(async ({ page }) => {
     await page.goto(baseUrl);
@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
 
 test('Verify background image', async ({ page }) => {
     const body = page.locator('body');
-    await expect(locator).toHaveCSS('background-image', `url("${baseUrl}/style/images/fantasyStoriesNewImage.png")`);
+    await expect(body).toHaveCSS('background-image', `url("${baseUrl}/style/images/fantasyStoriesNewImage.png")`);
 });
 
 test('Verify section icons', async ({ page }) => {
