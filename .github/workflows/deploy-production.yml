@@ -1,8 +1,6 @@
 name: Deploy to Production
 
 on:
-  push:
-    branches: ["main"]
   # Configure Manual Trigger
   workflow_dispatch:
 
