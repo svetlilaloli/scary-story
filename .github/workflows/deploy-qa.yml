@@ -5,10 +5,21 @@ on:
     branches: ["qa"]
 
 jobs:
+  deploy-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to QA environment
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.SERVICE_ID_QA }}
+          api-key: ${{ secrets.RENDER_TOKEN }}
   test:
+    needs: deploy-render
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
+    - name: Wait for deploy
+      run: sleep 60  
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
@@ -19,12 +30,4 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npm test
-  deploy-render:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to QA environment
-        uses: johnbeynon/render-deploy-action@v0.0.8
-        with:
-          service-id: ${{ secrets.SERVICE_ID_QA }}
-          api-key: ${{ secrets.RENDER_TOKEN }}
+  
