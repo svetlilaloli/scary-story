@@ -8,7 +8,7 @@ jobs:
   deploy-render:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Render.com
+      - name: Deploy to QA environment
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: ${{ secrets.SERVICE_ID }}
