@@ -6,7 +6,7 @@ test.describe.configure({ mode: "serial" });
 const baseUrl = 'http://127.0.0.1:5500';
 
 test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto(baseUrl);
 });
 
 test('Verify background image', async ({ page }) => {
