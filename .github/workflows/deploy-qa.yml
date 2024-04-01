@@ -20,6 +20,7 @@ jobs:
     - name: Run Playwright tests
       run: npm test
   deploy-render:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to QA environment
