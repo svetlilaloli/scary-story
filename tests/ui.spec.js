@@ -3,7 +3,7 @@ const exp = require('constants');
 
 test.describe.configure({ mode: "serial" });
 
-const baseUrl = 'http://127.0.0.1:5500';
+const baseUrl = 'https://scary-story-qa-bvk3.onrender.com/';
 
 test.beforeEach(async ({ page }) => {
     await page.goto(baseUrl);
